@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  alpine_docker_pass:
+    image: localhost:5000/alpine_docker_pass:latest
+    environment:
+      DOCKER_HOST: tcp://docker:2376
+      DOCKER_TLS_VERIFY: 1
+      DOCKER_CERT_PATH: /certs/client
+    volumes:
+      - certs:/certs/client 
+    stdin_open: true
+    tty: true 
+
+  docker:
+    # Starts a Docker daemon at the DNS name "docker"
+    # Note:
+    #  * This must be called "docker" to line up with the default
+    #    TLS certificate name
+    #  * DOCKER_TLS_CERTDIR defaults to "/certs
+    image: docker:19.03-dind
+    privileged: yes
+    volumes:
+      - certs:/certs/client     
+
+volumes:
+  certs:
