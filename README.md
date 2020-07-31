@@ -2,7 +2,7 @@
 
 This repo demonstrates how you can programatically automate securely logging into Docker in an Alpine Linux Dockerfile.
 
-Blog Post Coming Soon!
+Blog post going into further details about this repository https://jer-k.github.io/apline-linux-docker-authentication-with-pass/
 
 ## Usage
 
